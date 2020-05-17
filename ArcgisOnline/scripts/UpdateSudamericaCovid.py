@@ -65,7 +65,6 @@ def actualizar_datos(urlservicio,datosres):
                 datosres["features"][x]["attributes"]["Sum_Deaths"]    = str(deaths)
                 datosres["features"][x]["attributes"]["Sum_Recovered"] = str(recovered)
                 datosres["features"][x]["attributes"]["Sum_Active"]    = str(active)        
-                print(name, ":", value)
     
     return datosres
 
