@@ -1,0 +1,26 @@
+on:
+  schedule:
+    - cron: "40 1 * * *"
+
+name: updated
+
+jobs:
+  updated:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+     
+      - name: SETUP PYTHON
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+
+      - name: INSTALL PYTHON DEPENDENCIES
+        run: |
+          pip install --upgrade pip
+          pip install requests
+
+
+      - name: RUN PYTHON UPDATE COVID
+        run: |
+          ./ArcgisOnline/scripts/testupdate.py
