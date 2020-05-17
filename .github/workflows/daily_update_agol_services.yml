@@ -26,4 +26,4 @@ jobs:
 
       - name: RUN PYTHON UPDATE COVID
         run: |
-          ./ArcgisOnline/scripts/testupdate.py
+          python ./ArcgisOnline/scripts/testupdate.py
