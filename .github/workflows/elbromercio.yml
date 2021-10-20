@@ -29,9 +29,9 @@ jobs:
       #   run: |
       #     python ./ArcgisOnline/scripts/testupdate.py
 
-      # - name: RUN PYTHON create folder
-        # run: |
-        #   python ./Generales/scripts/pushtoelbromercio.py
+      - name: RUN PYTHON create folder
+        run: |
+          python ./Generales/scripts/pushtoelbromercio.py
 
       - name: Pushes to another repository@master
         id : push_directory
@@ -41,7 +41,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets._GITHUB_TOKEN}}
 
         with:
-          source-directory: './Generales/sources/elBromercio'
+          source-directory: 'output'
           destination-github-username: 'jorgeluisyh'
           destination-repository-name: 'elBromercio'
           user-email: 'jorgeluisyh@gmail.com'
