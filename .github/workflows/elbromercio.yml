@@ -41,7 +41,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets._GITHUB_TOKEN}}
 
         with:
-          source-directory: './Generales/sources/elbromercio'
+          source-directory: './Generales/sources/elBromercio'
           destination-github-username: 'jorgeluisyh'
           destination-repository-name: 'elBromercio'
           user-email: 'jorgeluisyh@gmail.com'
