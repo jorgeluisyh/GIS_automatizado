@@ -33,7 +33,7 @@ jobs:
         # run: |
         #   python ./Generales/scripts/pushtoelbromercio.py
 
-      - name: Pushes to another repository@main
+      - name: Pushes to another repository@master
         id : push_directory
         uses: jorgeluisyh/github-action-GIS_automatizado@main
 
