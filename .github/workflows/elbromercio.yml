@@ -1,0 +1,54 @@
+on:
+  push:
+    branches:
+      - main
+
+  # schedule:
+  #   - cron: "0 7,12,16 * * *"
+
+name: updated
+
+jobs:
+  updated:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+     
+      - name: SETUP PYTHON
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+
+      - name: INSTALL PYTHON DEPENDENCIES
+        run: |
+          pip install --upgrade pip
+          pip install requests
+          pip install bs4
+
+      # - name: RUN TEST UPDATE COVID
+      #   run: |
+      #     python ./ArcgisOnline/scripts/testupdate.py
+
+      - name: RUN PYTHON create folder
+        # run: |
+        #   python ./Generales/scripts/pushtoelbromercio.py
+
+      - name: Pushes to another repository@main
+        id : push_directory
+        uses: jorgeluisyh/github-action-GIS_automatizado@main
+
+        env:
+          API_TOKEN_GITHUB: ${{ secrets._GITHUB_TOKEN}}
+
+        with:
+          source-directory: './Generales/sources/elbromercio'
+          destination-github-username: 'jorgeluisyh'
+          destination-repositary-name: 'push-to-another-repository-output'
+          user-email: 'jorgeluisyh@gmail.com'
+          user-name: 'bot_automatizado'
+          commit-message: See Origin_COMMIT from $GITHUB_REF
+          target-branch: prueba
+
+      - name: Test get variable exported by xxx
+        run: echo $DESTINATION_CLONED_DIRECTORY
+
