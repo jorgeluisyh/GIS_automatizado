@@ -35,7 +35,7 @@ jobs:
 
       - name: Pushes to another repository@master
         id : push_directory
-        uses: jorgeluisyh/github-action-GIS_automatizado@master
+        uses: jorgeluisyh/GIS_automatizado@master
 
         env:
           API_TOKEN_GITHUB: ${{ secrets._GITHUB_TOKEN}}
@@ -43,7 +43,7 @@ jobs:
         with:
           source-directory: './Generales/sources/elbromercio'
           destination-github-username: 'jorgeluisyh'
-          destination-repositary-name: 'push-to-another-repository-output'
+          destination-repositary-name: 'elBromercio'
           user-email: 'jorgeluisyh@gmail.com'
           user-name: 'bot_automatizado'
           commit-message: See Origin_COMMIT from $GITHUB_REF
