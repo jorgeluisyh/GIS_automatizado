@@ -43,7 +43,7 @@ jobs:
         with:
           source-directory: './Generales/sources/elbromercio'
           destination-github-username: 'jorgeluisyh'
-          destination-repositary-name: 'elBromercio'
+          destination-repository-name: 'elBromercio'
           user-email: 'jorgeluisyh@gmail.com'
           user-name: 'bot_automatizado'
           commit-message: See Origin_COMMIT from $GITHUB_REF
