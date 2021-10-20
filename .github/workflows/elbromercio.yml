@@ -35,7 +35,7 @@ jobs:
 
       - name: Pushes to another repository@master
         id : push_directory
-        uses: jorgeluisyh/github-action-GIS_automatizado@main
+        uses: jorgeluisyh/github-action-GIS_automatizado@master
 
         env:
           API_TOKEN_GITHUB: ${{ secrets._GITHUB_TOKEN}}
