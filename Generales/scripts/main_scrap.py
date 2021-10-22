@@ -59,8 +59,8 @@ def getSubjectandImage(url_noticia):
 	imgdiv = sopa.find_all(tag,{"class": clase})[0]
 	imgurl = imgdiv["src"]
 	titulo = sopa.find('title').get_text().encode('utf-8')
-	keyword = titulo.split('|')[-2]
-	tema =  keyword.strip()
+	keytag = titulo.split(b'|')[-2]
+	tema =  keytag.strip()
 	return tema,imgurl
 
 
