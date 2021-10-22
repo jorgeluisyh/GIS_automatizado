@@ -15,9 +15,9 @@ dirgenerales = os.path.dirname(os.path.dirname(__file__))
 scriptsdir = os.path.join(dirgenerales, 'scripts')
 sourcesdir = os.path.join(dirgenerales, 'sources')
 ## Desarrollo
-imgsdir_output = os.path.join(sourcesdir, 'elBromercio/images')
+# imgsdir_output = os.path.join(sourcesdir, 'elBromercio/images')
 ## Produccion
-# imgsdir_output = os.path.join(ruta_output, 'images')
+imgsdir_output = os.path.join(ruta_output, 'images')
 
 
 dict_noticias= dict()
