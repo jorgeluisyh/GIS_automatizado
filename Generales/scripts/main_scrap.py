@@ -135,11 +135,11 @@ def reemplazardatosenpage(num):
 	"""
 	Reemplazar los datos de la noticia principal dentro de la subpagina
 	"""
-	html_ini = os.path.join(sourcesdir,'elBromercio/pages/single%d.html'%num)
+	html_ini = os.path.join(sourcesdir,'elBromercio/pages/noticia%d/index.html'%num)
 	# ruta output desarrollo
 	# html_fin = os.path.join(sourcesdir,'elBromercio/pages/single%d_copy.html'%num)
 	# ruta output produccion
-	html_fin = os.path.join(ruta_output,'pages/single%d.html'%num)
+	html_fin = os.path.join(ruta_output,'pages/noticia%d/index.html'%num)
 	
 	html = open(html_ini) 
 	sopa_single = BeautifulSoup(html, 'html.parser')
