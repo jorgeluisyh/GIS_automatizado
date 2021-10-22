@@ -31,7 +31,11 @@ jobs:
 
       - name: RUN PYTHON create folder
         run: |
-          python ./Generales/scripts/pushtoelbromercio.py
+          python ./Generales/scripts/copytooutput.py
+      
+      - name: RUN PYTHON scrap pagina
+        run: |
+          python ./Generales/scripts/main_scrap.py
 
       - name: Pushes to another repository@master
         id : push_directory
