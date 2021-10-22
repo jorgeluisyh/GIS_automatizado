@@ -3,9 +3,11 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-import sys
-reload(sys)
-sys.setdefaultencoding("utf-8")
+
+# USAR EL RELOAD SYS PARA PYTHON27
+# import sys
+# reload(sys)
+# sys.setdefaultencoding("utf-8")
 
 
 ruta_output = "output"
