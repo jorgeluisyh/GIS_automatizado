@@ -166,7 +166,7 @@ def main():
 
 		url = dict_noticias[i][0]
 		tema, img_url = getSubjectandImage(url)
-  		nameimg = "img_%d"%i
+		nameimg = "img_%d"%i
 		downloadfile(nameimg, img_url, imgsdir_output,'jpg')
 
 		texto_noticia = getcontenido(url)
