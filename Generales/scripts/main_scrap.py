@@ -41,7 +41,7 @@ def get_premium_news():
 
 	for num, div in enumerate(mydivs, 1):
 		dict_noticias[num]= [diario+div["href"]]
-		dict_noticias[num].append(div.get_text().encode('utf-8'))
+		dict_noticias[num].append(div.get_text().encode('utf-8').decode("utf-8") )
 
 
 
@@ -58,8 +58,8 @@ def getSubjectandImage(url_noticia):
 	# print sopa.prettify('utf-8')
 	imgdiv = sopa.find_all(tag,{"class": clase})[0]
 	imgurl = imgdiv["src"]
-	titulo = sopa.find('title').get_text().encode('utf-8')
-	keytag = titulo.split(b'|')[-2]
+	titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
+	keytag = titulo.split('|')[-2]
 	tema =  keytag.strip()
 	return tema,imgurl
 
@@ -72,10 +72,10 @@ def getcontenido(url_noticia):
 	contenido = res.content
 	sopa = BeautifulSoup(contenido,'html.parser')
 	titulo = sopa.find('title').get_text()
-	print(titulo.encode('utf-8'))
+	print(titulo.encode('utf-8').decode("utf-8") )
 
 	grupos_texto=sopa.find_all(['h2','p'])
-	parrafos = [x.get_text().encode('utf-8')for x in grupos_texto]
+	parrafos = [x.get_text().encode('utf-8').decode("utf-8") for x in grupos_texto]
 	datos = u'\n'.join(parrafos)
 	return datos
 
