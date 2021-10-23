@@ -14,3 +14,8 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face{
+  font-family: 'Canterbury';
+  src: local('Canterbury'), url('../fonts/canterbury.regular.ttf')  format('truetype');
+}
