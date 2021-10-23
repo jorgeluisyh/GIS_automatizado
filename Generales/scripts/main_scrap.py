@@ -71,13 +71,24 @@ def getcontenido(url_noticia):
 	res = requests.get(url_noticia)
 	contenido = res.content
 	sopa = BeautifulSoup(contenido,'html.parser')
-	titulo = sopa.find('title').get_text()
-	print(titulo.encode('utf-8').decode("utf-8") )
+	# titulo = sopa.find('title').get_text()
+	# print(titulo.encode('utf-8').decode("utf-8") )
 
-	grupos_texto=sopa.find_all(['h2','p'])
-	parrafos = [x.get_text().encode('utf-8').decode("utf-8") for x in grupos_texto]
-	datos = u'\n'.join(parrafos)
-	return datos
+	# grupos_texto=sopa.find_all(['h2','p'])
+	# parrafos = [x.get_text().encode('utf-8').decode("utf-8") for x in grupos_texto]
+	# datos = u'\n'.join(parrafos)
+	# return datos
+	cls_resumen = "sht__summary"
+	resumen = sopa.find('h2',{"class": cls_resumen}).get_text()
+
+
+	clase = "story-contents__content story-content__nota-premium paywall no_copy"
+	noticia_princ = sopa.find('div',{"class": clase})
+	noticia_princ["style"]=""
+	objeto_noticia =noticia_princ.contents
+
+	return resumen, objeto_noticia
+
 
 
 def downloadfile(name,url,path,type):
@@ -151,7 +162,8 @@ def reemplazardatosenpage(num):
 	tag_titulo.string = dict_noticias[num][1]
 
 	tag_noticia = sopa_single.find('p',{"id":"noticia"})
-	tag_noticia.string = dict_noticias[num][5]
+	# tag_noticia.string = dict_noticias[num][5]
+	tag_noticia.contents = dict_noticias[num][5]
 
 
 	with open(html_fin, "wb") as f_output:
@@ -171,8 +183,8 @@ def main():
 		nameimg = "img_%d"%i
 		downloadfile(nameimg, img_url, imgsdir_output,'jpg')
 
-		texto_noticia = getcontenido(url)
-		resumen = texto_noticia[0:248]+"..."
+		resumen, texto_noticia = getcontenido(url)
+		# resumen = texto_noticia[0:248]+"..."
 		dict_noticias[i].append(tema)
 		dict_noticias[i].append(img_url)
 		dict_noticias[i].append(resumen)
