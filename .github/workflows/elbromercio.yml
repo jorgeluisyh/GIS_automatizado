@@ -4,7 +4,7 @@ on:
       - master
 
   schedule:
-    - cron: "0 3,12,17,21, * * *"
+    - cron: "0 3,13,17,21 * * *"
 
 name: updated
 
