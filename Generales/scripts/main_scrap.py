@@ -176,7 +176,7 @@ def reemplazardatosenpage(num):
 
 def main():
 	get_premium_news()
-	for i in range(1,4):
+	for i in range(1,7):
 
 		url = dict_noticias[i][0]
 		tema, img_url = getSubjectandImage(url)
