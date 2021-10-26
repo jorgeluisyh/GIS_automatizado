@@ -114,7 +114,7 @@ def downloadfile(name,url,path,type):
 
 def reemplazardatosenhtml():
 	"""
-	Reemplazae datos del diccionario en el index.html y las subpaginas
+	Reemplazar datos del diccionario en el index.html y las subpaginas
 
 	dict_noticias {1:[url_noticia, titulo, tema, imgurl, resumen, contenido]}
 	"""
@@ -176,7 +176,7 @@ def reemplazardatosenpage(num):
 
 def main():
 	get_premium_news()
-	for i in range(1,4):
+	for i in range(1,7):
 
 		url = dict_noticias[i][0]
 		tema, img_url = getSubjectandImage(url)
