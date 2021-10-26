@@ -128,6 +128,7 @@ def reemplazardatosenhtml():
 	sopa_index = BeautifulSoup(html, 'html.parser')
 
 	for num in range(1,7):
+		print("Reemplazando titulo tema y resumen en p %d"%num)
 		tag_titulo = sopa_index.find('a',{"id":"titulo_%d"%num})
 		tag_titulo.string = dict_noticias[num][1]
 
