@@ -55,7 +55,7 @@ def getSubjectandImage(url_noticia):
 	res = requests.get(url_noticia)
 	contenido = res.content
 	sopa = BeautifulSoup(contenido,'html.parser')
-	print (sopa.prettify('utf-8'))
+	# print (sopa.prettify('utf-8'))
 	imgdiv = sopa.find_all(tag,{"class": clase})[0]
 	imgurl = imgdiv["src"]
 	titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
