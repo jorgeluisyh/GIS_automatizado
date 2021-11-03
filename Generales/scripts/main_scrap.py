@@ -42,6 +42,9 @@ def get_premium_news():
 	for num, div in enumerate(mydivs, 1):
 		dict_noticias[num]= [diario+div["href"]]
 		dict_noticias[num].append(div.get_text().encode('utf-8').decode("utf-8") )
+        urltemp="https://elcomercio.pe/economia/dia-1/intursa-antes-el-90-de-nuestro-negocio-era-internacional-y-hoy-ese-90-es-domestico-hoteles-libertador-marriott-turismo-receptivo-turismo-interno-noticia/?fbclid=IwAR07JKKQogNuCLq-0W3VyCoIyCPqzzcK7IH3uQfZP2PjouRfrpNJ0V8I-vs"
+
+        dict_noticias[1] = [urltemp,"intursa"]
 
 
 
