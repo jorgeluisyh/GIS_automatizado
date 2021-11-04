@@ -62,15 +62,18 @@ def getSubjectandImage(sopa):
 	Obtenemos la categoría de la notica : Economía, Política, Sociales, etc
 	Obtenemos también la url de la imagen principal de la noticia
 	"""
-	tag = 'img'
-	clase = "s-multimedia__image w-full o-cover s-multimedia__image--big"
-	# print (sopa.prettify('utf-8'))
-	imgdiv = sopa.find_all(tag,{"class": clase})[0]
-	imgurl = imgdiv["src"]
-	titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
-	keytag = titulo.split('|')[-2]
-	tema =  keytag.strip()
-	return tema,imgurl
+	try:
+		tag = 'img'
+		clase = "s-multimedia__image w-full o-cover s-multimedia__image--big"
+		# print (sopa.prettify('utf-8'))
+		imgdiv = sopa.find_all(tag,{"class": clase})[0]
+		imgurl = imgdiv["src"]
+		titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
+		keytag = titulo.split('|')[-2]
+		tema =  keytag.strip()
+		return tema,imgurl
+	except:
+		print("No se encontro imagen en la url: ")
 
 
 def getcontenido(sopa):
