@@ -64,9 +64,10 @@ def getSubjectandImage(sopa):
 	"""
 	try:
 		tag = 'img'
-		clase = "s-multimedia__image w-full o-cover s-multimedia__image--big"
+		clase1 = "s-multimedia__image w-full o-cover s-multimedia__image--big"
+		clase2 = "s-multimedia__image w-full o-cover"
 		# print (sopa.prettify('utf-8'))
-		imgdiv = sopa.find_all(tag,{"class": clase})[0]
+		imgdiv = sopa.find_all(tag,{"class": [clase1, clase2]})[0]
 		imgurl = imgdiv["src"]
 		titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
 		keytag = titulo.split('|')[-2]
