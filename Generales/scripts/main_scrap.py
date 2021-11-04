@@ -182,7 +182,10 @@ def main():
 	for i in range(1,7):
 
 		url = dict_noticias[i][0]
+		print(url)
 		tema, img_url = getSubjectandImage(url)
+		print(tema)
+		print(img_url)
 		nameimg = "img_%d"%i
 		downloadfile(nameimg, img_url, imgsdir_output,'jpg')
 
@@ -192,6 +195,7 @@ def main():
 		dict_noticias[i].append(img_url)
 		dict_noticias[i].append(resumen)
 		dict_noticias[i].append(texto_noticia)
+		print("*****************************")
 
 	
 
