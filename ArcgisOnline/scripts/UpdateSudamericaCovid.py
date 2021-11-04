@@ -44,6 +44,7 @@ def actualizar_servicio(url,datos):
         'f': 'pjson'
         }
     )
+    print(datos)
     resup = json.loads(res_update.text)
     print(resup)
 
