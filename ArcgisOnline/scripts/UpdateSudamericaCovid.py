@@ -91,8 +91,11 @@ def actualizar_datos(urlservicio,datosres):
     return datosres
 
 def main(url_propio,url_datos):
+    print("leemos el esquema de datos")
     esquema = consulta_esquema(url_propio)
+    print("obtenemos los datos del servicio a actualizar")
     datosactualizados =actualizar_datos(url_datos,esquema)
+    print("actualizamos los datos de nuestro servicio")
     actualizar_servicio(url_propio,datosactualizados)
 
 
