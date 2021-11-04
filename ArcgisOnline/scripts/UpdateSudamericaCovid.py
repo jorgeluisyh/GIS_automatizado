@@ -77,10 +77,10 @@ def actualizar_datos(urlservicio,datosres):
             name = m2["Country_Region"]
 
             if name == identificador:
-                confirmed = m2["Confirmed"] if m2["Confirmed"] else -1
-                deaths = m2["Deaths"] if m2["Deaths"] else -1
-                recovered = m2["Recovered"] if m2["Recovered"]!='None' else -1
-                active = m2["Active"] if m2["Active"]!='None' else -1
+                confirmed = m2["Confirmed"] if m2["Confirmed"]!=None else -1
+                deaths = m2["Deaths"] if m2["Deaths"]!=None else -1
+                recovered = m2["Recovered"] if m2["Recovered"]!=None else -1
+                active = m2["Active"] if m2["Active"]!=None else -1
 
 
                 # datosres["features"][x]["attributes"]["Nombre_es"]    = "prueba"
