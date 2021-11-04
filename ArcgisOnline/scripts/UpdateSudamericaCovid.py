@@ -4,6 +4,10 @@ import json, uuid
 def consulta_esquema(url):
     """
     Consulta de esquema de nuestro servicio en el agol y retornamos los datos en formato json
+    params:
+        url: url del servicio
+    outputs:
+        res: datos del servicio en formato json
     """
     url = f'{url}/query'
     response = requests.post(
@@ -21,7 +25,11 @@ def consulta_esquema(url):
 
 def actualizar_servicio(url,datos):
     """
-    Actualizar los datos de nuestro servicio a partir de los datos obtenidos de la API ingresados en el json
+    Actualizar los datos de nuestro servicio con los datos obtenidos de la API en formato json
+    params:
+        url: url del servicio propio
+        datos: datos obtenidos de la API en formato json
+
     """
     url_update = f'{url}/updateFeatures'
     #borramos geometría de la actualizacion
@@ -41,7 +49,12 @@ def actualizar_servicio(url,datos):
 
 def actualizar_datos(urlservicio,datosres):
     """
-    Actualizamos los datos del json de nuestro servicio con los datos obtenidos de la API
+    Actualizamos los datos del json de con los datos obtenidos de la API
+    params:
+        urlservicio: url del servicio de datos
+        datosres: datos vacios contiene el esquema de nuestro servicio a actualizar
+    outputs:
+        datosres: datos actualizados con los datos obtenidos de la API
     """
     url = f'{urlservicio}/query'
     response2 = requests.post(
