@@ -76,5 +76,6 @@ def main(url_propio,url_datos):
 
 if __name__ == '__main__':
     url_covid = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases/FeatureServer/2'
-    url_propio = 'https://services6.arcgis.com/LLutPLesjvi5h66l/ArcGIS/rest/services/sudamerica_covid_19/FeatureServer/0'
+    # url_propio = 'https://services6.arcgis.com/LLutPLesjvi5h66l/ArcGIS/rest/services/sudamerica_covid_19/FeatureServer/0'
+    url_propio = 'https://services3.arcgis.com/v889c1iZVprBnLS0/ArcGIS/rest/services/sudamerica_covid_19/FeatureServer/0'
     main(url_propio,url_covid)
