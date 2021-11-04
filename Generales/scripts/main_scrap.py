@@ -193,6 +193,7 @@ def main():
 		url = dict_noticias[i][0]
 		print(url)
 		sopita = getSoupContent(url)
+		time.sleep(2)
 		tema, img_url = getSubjectandImage(sopita)
 		print(tema)
 		print(img_url)
