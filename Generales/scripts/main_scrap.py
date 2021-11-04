@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import requests
+import time
 from bs4 import BeautifulSoup
 
 # USAR EL RELOAD SYS PARA PYTHON27
@@ -45,18 +46,23 @@ def get_premium_news():
 	urltemp="https://elcomercio.pe/economia/dia-1/intursa-antes-el-90-de-nuestro-negocio-era-internacional-y-hoy-ese-90-es-domestico-hoteles-libertador-marriott-turismo-receptivo-turismo-interno-noticia/?fbclid=IwAR07JKKQogNuCLq-0W3VyCoIyCPqzzcK7IH3uQfZP2PjouRfrpNJ0V8I-vs"
 	dict_noticias[1] = [urltemp,"intursa"]
 
+def getSoupContent(url_noticia):
+	"""
+	Obtenemos el contenido de la noticia
+	"""
+	res = requests.get(url_noticia)
+	contenido = res.content
+	sopa = BeautifulSoup(contenido,'html.parser')
+	return sopa	
 
 
-def getSubjectandImage(url_noticia):
+def getSubjectandImage(sopa):
 	"""
 	Obtenemos la categoría de la notica : Economía, Política, Sociales, etc
 	Obtenemos también la url de la imagen principal de la noticia
 	"""
 	tag = 'img'
 	clase = "s-multimedia__image w-full o-cover s-multimedia__image--big"
-	res = requests.get(url_noticia)
-	contenido = res.content
-	sopa = BeautifulSoup(contenido,'html.parser')
 	# print (sopa.prettify('utf-8'))
 	imgdiv = sopa.find_all(tag,{"class": clase})[0]
 	imgurl = imgdiv["src"]
@@ -66,13 +72,10 @@ def getSubjectandImage(url_noticia):
 	return tema,imgurl
 
 
-def getcontenido(url_noticia):
+def getcontenido(sopa):
 	"""
 	Obtenemos el texto principal de la notica(en proceso de mejora de scrap)
 	"""
-	res = requests.get(url_noticia)
-	contenido = res.content
-	sopa = BeautifulSoup(contenido,'html.parser')
 	# titulo = sopa.find('title').get_text()
 	# print(titulo.encode('utf-8').decode("utf-8") )
 
@@ -140,6 +143,9 @@ def reemplazardatosenhtml():
 		tag_resumen = sopa_index.find('p',{"id": "resumen_%d"%num})
 		tag_resumen.string = dict_noticias[num][4]
 
+		tag_imagen = sopa_index.find('img',{"id": "imagen_%d"%num})
+		tag_imagen["src"] = dict_noticias[num][3]
+
 		reemplazardatosenpage(num)
 	
 	with open(html_fin, "wb") as f_output:
@@ -168,6 +174,9 @@ def reemplazardatosenpage(num):
 	# tag_noticia.string = dict_noticias[num][5]
 	tag_noticia.contents = dict_noticias[num][5]
 
+	tag_imagen = sopa_single.find('img',{"id":"imagen_principal"})
+	tag_imagen["src"] = dict_noticias[num][3]
+
 
 	with open(html_fin, "wb") as f_output:
 		f_output.write(sopa_single.prettify("utf-8"))
@@ -183,13 +192,14 @@ def main():
 
 		url = dict_noticias[i][0]
 		print(url)
-		tema, img_url = getSubjectandImage(url)
+		sopita = getSoupContent(url)
+		tema, img_url = getSubjectandImage(sopita)
 		print(tema)
 		print(img_url)
 		nameimg = "img_%d"%i
-		downloadfile(nameimg, img_url, imgsdir_output,'jpg')
+		# downloadfile(nameimg, img_url, imgsdir_output,'jpg')
 
-		resumen, texto_noticia = getcontenido(url)
+		resumen, texto_noticia = getcontenido(sopita)
 		# resumen = texto_noticia[0:248]+"..."
 		dict_noticias[i].append(tema)
 		dict_noticias[i].append(img_url)
