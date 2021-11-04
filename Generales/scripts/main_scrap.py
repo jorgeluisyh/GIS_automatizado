@@ -51,6 +51,7 @@ def getSoupContent(url_noticia):
 	Obtenemos el contenido de la noticia
 	"""
 	res = requests.get(url_noticia)
+	time.sleep(2)
 	contenido = res.content
 	sopa = BeautifulSoup(contenido,'html.parser')
 	return sopa	
