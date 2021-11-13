@@ -19,6 +19,7 @@ sourcesdir = os.path.join(dirgenerales, 'sources')
 # imgsdir_output = os.path.join(sourcesdir, 'elBromercio/images')
 ## Produccion
 imgsdir_output = os.path.join(ruta_output, 'images')
+logo_bromercio = "https://raw.githubusercontent.com/jorgeluisyh/elBromercio/main/images/logo3.png"
 
 
 dict_noticias= dict()
@@ -65,14 +66,18 @@ def getSubjectandImage(sopa):
 		clase1 = "s-multimedia__image w-full o-cover s-multimedia__image--big"
 		clase2 = "s-multimedia__image w-full o-cover"
 		# print (sopa.prettify('utf-8'))
-		imgdiv = sopa.find_all(tag,{"class": [clase1, clase2]})[0]
-		imgurl = imgdiv["src"]
-		titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 
+
+		titulo = sopa.find('title').get_text().encode('utf-8').decode("utf-8") 		
 		keytag = titulo.split('|')[-2]
 		tema =  keytag.strip()
-		return tema,imgurl
+
+		imgurl = logo_bromercio
+		imgdiv = sopa.find_all(tag,{"class": [clase1, clase2]})[0]
+		imgurl = imgdiv["src"]
 	except:
 		print("No se encontro imagen en la url: ")
+	
+	return tema,imgurl
 
 
 def getcontenido(sopa):
