@@ -92,7 +92,8 @@ def getcontenido(sopa):
 	# datos = u'\n'.join(parrafos)
 	# return datos
 	cls_resumen = "sht__summary"
-	resumen = sopa.find('h2',{"class": cls_resumen}).get_text()
+	resumen = sopa.find('h2',{"class": cls_resumen})
+	resumen = resumen.get_text() if resumen else "resumen no disponible"
 
 
 	clase = "story-contents__content story-content__nota-premium paywall no_copy"
