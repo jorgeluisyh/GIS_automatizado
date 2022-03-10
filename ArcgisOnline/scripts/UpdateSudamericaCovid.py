@@ -91,10 +91,10 @@ def actualizar_datos(urlservicio,datosres):
 
                 # datosres["features"][x]["attributes"]["Nombre_es"]    = "prueba"
 
-                datosres["features"][x]["attributes"]["Sum_Confirmed"] = str(confirmed)
-                datosres["features"][x]["attributes"]["Sum_Deaths"]    = str(deaths)
-                datosres["features"][x]["attributes"]["Sum_Recovered"] = str(recovered)
-                datosres["features"][x]["attributes"]["Sum_Active"]    = str(active)        
+                datosres["features"][x]["attributes"]["confirmad"] = str(confirmed)
+                datosres["features"][x]["attributes"]["muertes"]    = str(deaths)
+                datosres["features"][x]["attributes"]["recuperado"] = str(recovered)
+                # datosres["features"][x]["attributes"]["Sum_Active"]    = str(active)        
     
     return datosres
 
