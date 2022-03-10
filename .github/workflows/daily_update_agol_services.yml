@@ -17,7 +17,7 @@ jobs:
       - name: SETUP PYTHON
         uses: actions/setup-python@v1
         with:
-          python-version: 3.6
+          python-version: 3.7.12
 
       - name: INSTALL PYTHON DEPENDENCIES
         run: |
