@@ -1,6 +1,7 @@
 import os, requests
 import json, uuid
 
+token_gis = 'PIJ8_YHbc8dBC2Ny3MTUF-dyGujPEexzRBSukGKZZqmtkI60MInY51kI1sHU-LwIVduQGS6tEg2lhhlcH8_DMeYw3mN0ULZOZJKVVkHo9OUhPnT0qYRXD32AwyrNiqaRJbcH-p7EEsMq1k1VeRsWDkcfF5IiZRDiuOPqIdEsG4uKVyX73Sh2GjBw2-K6CZuG'
 def consulta_esquema(url):
     """
     Consulta de esquema de nuestro servicio en el agol y retornamos los datos en formato json
@@ -16,6 +17,7 @@ def consulta_esquema(url):
         'where': '1=1',
         'outFields': "*",
         # 'returnCountOnly': 'true',
+        'token': token_gis,
         'f': 'pjson'
         }
     )
@@ -41,6 +43,7 @@ def actualizar_servicio(url,datos):
         data = {
         'features': json.dumps(datos["features"]),
         # 'returnCountOnly': 'true',
+        'token': token_gis,
         'f': 'pjson'
         }
     )
@@ -104,5 +107,5 @@ def main(url_propio,url_datos):
 if __name__ == '__main__':
     url_covid = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases/FeatureServer/2'
     # url_propio = 'https://services6.arcgis.com/LLutPLesjvi5h66l/ArcGIS/rest/services/sudamerica_covid_19/FeatureServer/0'
-    url_propio = 'https://services3.arcgis.com/v889c1iZVprBnLS0/ArcGIS/rest/services/sudamerica_covid_19/FeatureServer/0'
+    url_propio = 'https://services6.arcgis.com/Hp9VjF6h55A4WBre/ArcGIS/rest/services/paises_sudamerica/FeatureServer/0'
     main(url_propio,url_covid)
