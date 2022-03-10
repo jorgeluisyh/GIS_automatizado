@@ -86,12 +86,12 @@ def actualizar_datos(urlservicio,datosres):
                 confirmed = m2["Confirmed"] if m2["Confirmed"]!=None else -1
                 deaths = m2["Deaths"] if m2["Deaths"]!=None else -1
                 recovered = m2["Recovered"] if m2["Recovered"]!=None else -1
-                active = m2["Active"] if m2["Active"]!=None else -1
+                # active = m2["Active"] if m2["Active"]!=None else -1
 
 
                 # datosres["features"][x]["attributes"]["Nombre_es"]    = "prueba"
 
-                datosres["features"][x]["attributes"]["confirmad"] = str(confirmed)
+                datosres["features"][x]["attributes"]["confirmado"] = str(confirmed)
                 datosres["features"][x]["attributes"]["muertes"]    = str(deaths)
                 datosres["features"][x]["attributes"]["recuperado"] = str(recovered)
                 # datosres["features"][x]["attributes"]["Sum_Active"]    = str(active)        
