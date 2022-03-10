@@ -71,6 +71,9 @@ def actualizar_datos(urlservicio,datosres):
         }
     )
     res2 = json.loads(response2.text)
+    
+    numpaises = len(res2["features"])
+    print("el numero de registros es: {}".formatstr((numpaises)) )
   
     for x in range(len(datosres["features"])):
         identificador =datosres["features"][x]["attributes"]["Nombre_en"]
