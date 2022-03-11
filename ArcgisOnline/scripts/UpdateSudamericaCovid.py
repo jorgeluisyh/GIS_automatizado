@@ -1,7 +1,29 @@
 import os, requests
 import json, uuid
 
-token_gis = 'PIJ8_YHbc8dBC2Ny3MTUF-dyGujPEexzRBSukGKZZqmtkI60MInY51kI1sHU-LwIVduQGS6tEg2lhhlcH8_DMeYw3mN0ULZOZJKVVkHo9OUhPnT0qYRXD32AwyrNiqaRJbcH-p7EEsMq1k1VeRsWDkcfF5IiZRDiuOPqIdEsG4uKVyX73Sh2GjBw2-K6CZuG'
+_USER = 'adminsam'
+_PASSWORD = 'cristal2016%'
+token_gis = ''
+
+def getToken():
+    '''
+    :return: Devuelve el token unico por modulo y maquina 
+    '''
+    global token_gis
+    _URL = "https://www.arcgis.com/sharing/generateToken"
+    data = {
+        'username': _USER,
+        'password': _PASSWORD,
+        'referer': "https://www.arcgis.com",
+        'request': 'gettoken',
+        'f': 'json'
+    }
+    response = requests.post(_URL, data=data)
+    response = response.json()
+    token = response.get('token', 0)
+    token_gis = token
+
+
 def consulta_esquema(url):
     """
     Consulta de esquema de nuestro servicio en el agol y retornamos los datos en formato json
@@ -99,6 +121,8 @@ def actualizar_datos(urlservicio,datosres):
     return datosres
 
 def main(url_propio,url_datos):
+    getToken()
+    print('token: {}'.format(token_gis))
     print("leemos el esquema de datos")
     esquema = consulta_esquema(url_propio)
     print("obtenemos los datos del servicio a actualizar")
