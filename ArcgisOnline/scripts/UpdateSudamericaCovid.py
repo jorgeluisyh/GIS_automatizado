@@ -1,7 +1,7 @@
 import os, requests
 import json, uuid
 
-_USER = 'adminsam'
+_USER = 'adminsam16'
 _PASSWORD = 'cristal2016%'
 token_gis = ''
 
